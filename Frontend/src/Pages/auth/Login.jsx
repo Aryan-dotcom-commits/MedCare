@@ -48,8 +48,11 @@ const Login = () => {
         draggable: true,
       });
 
-      // Redirect to profile page
-      navigate('/profile');
+      if(user.role == 'Doctor') {
+        window.location.href = '/doctor/dashboard';
+      } else {
+        window.location.href = '/patient/dashboard'
+      }
     } catch (error) {
       console.error('Error during login:', error.response?.data); // Log backend error details
 
