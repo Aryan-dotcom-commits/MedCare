@@ -1,14 +1,19 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.DTO
 {
     public class AppointmentDto
     {
-        public string PatientId { get; set; }
-        public string Name { get; set; }
-        public string ReasonForVisit { get; set; }
-        public string DoctorToVisit { get; set; }
-        public DateTime AppointmentTime { get; set; }
-        public DateTime Date { get; set; }
+        [Required]
+        public Guid DoctorId { get; set; } // ID of the doctor
+
+        [Required]
+        public DateTime AppointmentTime { get; set; } // Date and time of the appointment
+
+        [Required]
+        [MaxLength(500)]
+        public string ReasonForVisit { get; set; } // Reason for the visit
     }
 }

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Models.ApplicationUsers;
 
-namespace Models.Doctor {
+namespace Models.Doctors {
     public class Doctor
     {
         [Key]

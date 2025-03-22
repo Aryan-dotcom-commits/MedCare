@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
+using Data.EmailServices;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<EmailService>();
 
 //Injection for Sql Queries
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

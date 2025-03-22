@@ -48,6 +48,7 @@ D:\fyp\api\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\fyp\api\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 D:\fyp\api\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\fyp\api\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\fyp\api\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\fyp\api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\fyp\api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\fyp\api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll

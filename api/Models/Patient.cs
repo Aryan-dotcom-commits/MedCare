@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Models.ApplicationUsers;
 
-namespace Models.User {
+namespace Models.Users {
     public class Patient
     {
         public Guid Id { get; set; }

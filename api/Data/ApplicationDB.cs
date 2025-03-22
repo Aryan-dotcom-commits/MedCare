@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Models.User;
-using Models.Doctor;
+using Models.Users;
+using Models.Doctors;
+using Models.Prescription;
 using Models.Appointment;
 using Models.ApplicationUsers;
 
@@ -16,6 +17,7 @@ namespace Data.ApplicationDb {
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Appointment> Appointments {get; set;}
+        public DbSet<Prescription> Prescriptions {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

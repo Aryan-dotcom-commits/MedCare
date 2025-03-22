@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using Data.ApplicationDb;
 using Models.DTO;
-using Models.User;      
-using Models.Doctor;
+using Models.Users;      
+using Models.Doctors;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Data.EmailServices;
 
 namespace Controller.AuthController {
     [Route("api/[controller]")]
@@ -21,6 +22,7 @@ namespace Controller.AuthController {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
+        private readonly EmailService _emailService;
 
         // Single constructor with all required dependencies
         [ActivatorUtilitiesConstructor]
@@ -28,12 +30,14 @@ namespace Controller.AuthController {
             ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            EmailService emailService)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            _emailService = emailService;
         }
 
         // GET: /api/patient
@@ -119,6 +123,18 @@ namespace Controller.AuthController {
             await _context.SaveChangesAsync();
 
             Console.WriteLine("Registration successful for user: " + newUser.Email);
+            try
+            {
+                var emailBody = $"Hello {registerDto.Name},\n\nThank you for registering with MedicareApp!";
+                _emailService.SendEmail("hello@demomailtrap.co", registerDto.Email, "Registration Successful", emailBody);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send email: {ex.Message}");
+                // Optionally, log the error but do not block registration
+            }
+
+            
             return Ok(new { message = "Registration successful." });
         }
 
